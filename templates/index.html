@@ -1,0 +1,107 @@
+<!-- 1. Short Intro -->
+<!-- 2. Education - Current School; Physics, Mathematics, Computer Science -->
+<!-- 3. Hobbies -->
+<!-- 4. Future Plans -->
+<!-- 5. Captcha -->
+<!-- 6. E-Mail -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Georgiy Furanets - Portfolio</h1>
+            <a href="#contact" class="contact-btn">Contact Me</a>
+        </div>
+    </header>
+
+    <!-- Introduction -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Hello! I am a 17-year-old student from Riga, Latvia. My main priority is education, as well as staying fit and learning new skills and hobbies.</p>
+        </div>
+    </section>
+
+    <!-- Field of interest -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Fields of Interest</h2>
+            <div class="skill-list">
+                <div class="skill-item"><b>Physics</b> - my main subject that I learn is physics. My aims is to qualify to IPhO as a member of Latvian team. Apart from classical physics, I want to study quantum physics, particle physics, and other modern physics topics.</div>
+                <div class="skill-item"><b>Mathematics</b> - this science is important for physics and computer science, as well as is interesting by itself. I am learning topics of calculus, linear algebra, and other fields.</div>
+                <div class="skill-item"><b>Computer Science</b> - this is my latest passion out of three. My main languages are C++ and Python. I train for programming competition, as well as write projects in both languages, sometimes learning additional ones.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project, GitHub -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Upcoming Projects</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <h3>Portfolio</h3>
+                    <p>This link leads to this project's source code, which you can view to see how I made it.</p>
+                    <a href="https://github.com/gfuranets/Portfolio" class="project-link">View Project</a>
+                </div>
+                <div class="project-item">
+                    <h3>GitHub</h3>
+                    <p>I am currently at the beginning of my project-making journey, but you will be able to view other projects on my GitHub account.</p>
+                    <a href="https://github.com/gfuranets" class="project-link">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacting -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>I am open to ideas and collaborations. Feel free to contact me via this form.</p>
+            <form id="contactForm" action="/send_message" method="post" onsubmit="return validateCaptcha()">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                
+                <!-- CAPTCHA -->
+                <label for="captcha">What is 5 + 3?</label>
+                <input type="text" id="captcha" name="captcha" placeholder="Answer" required>
+                <p id="captchaError" style="color: red;"></p>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; Georgiy Furanets - Portfolio</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for CAPTCHA validation -->
+    <script>
+        function validateCaptcha() {
+            const captchaInput = document.getElementById("captcha").value;
+            const captchaError = document.getElementById("captchaError");
+
+            if (captchaInput !== "8") {
+                captchaError.textContent = "Incorrect answer. Please try again.";
+                return false;  // Prevent form submission
+            }
+
+            captchaError.textContent = "";  // Clear error if answer is correct
+            return true;  // Allow form submission
+        }
+    </script>
+</body>
+</html>
